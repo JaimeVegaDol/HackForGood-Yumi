@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyCz3rR6g74wx3yQbbVjeH690KaVeP2Q35g",
-    authDomain: "homemoreless.firebaseapp.com",
-    databaseURL: "https://homemoreless.firebaseio.com",
-    projectId: "homemoreless",
-    storageBucket: "homemoreless.appspot.com",
-    messagingSenderId: "554101812096"
+    apiKey: 'AIzaSyBoUtlhnHiXacnA1jOpo8ANQo8CvuUwUOA',
+    authDomain: 'yumi-ae6eb.firebaseapp.com',
+    databaseURL: 'https://yumi-ae6eb.firebaseio.com',
+    projectId: 'yumi-ae6eb',
+    storageBucket: '',
+    messagingSenderId: '300018826860'
   }
 };
 
