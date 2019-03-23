@@ -21,6 +21,8 @@ El codigo esta en el repositorio GIT
 
 ## Presentacion de la idea
 Tanto la presentacion como el video explicando el proyecto estan tambien incluidos en el GIT
+https://youtu.be/zpaNEIaWhT4
+https://drive.google.com/drive/folders/18WoCot5gGm1xOnrqWK8mONLdKejmdGWT?usp=sharing
 
 
 ### Extensiones
