@@ -1,0 +1,51 @@
+<div class="login-page" [@routerTransition]>
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <img src="assets/images/logo.jpg" width="350px" />
+            <form role="form" [formGroup]="signupForm">
+                <div class="form-content">
+                    <div class="btn-group btn-group-toggle mb-3">
+                        <label style="margin-right: 1em;">
+                            <input  type="radio" formControlName="type" value="comedor"> Comedor
+                        </label>
+                        <label style="margin-right: 1em;">
+                            <input ngbButton type="radio" formControlName="type" value="voluntario"> Voluntario
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            class="form-control input-underline input-lg"
+                            formControlName="name"
+                            placeholder="{{ 'Full Name' | translate }}">
+                    </div>
+
+                    <div class="form-group">
+                        <input 
+                            type="email"
+                            class="form-control input-underline input-lg"
+                            formControlName="email"
+                            placeholder="{{ 'Email' | translate }}">
+                    </div>
+
+                    <div class="form-group">
+                        <input 
+                            type="password"
+                            class="form-control input-underline input-lg"
+                            formControlName="password"
+                            placeholder="{{ 'Password' | translate }}">
+                    </div>
+                    <div class="form-group">
+                        <input
+                        type="password"
+                        class="form-control input-underline input-lg"
+                        formControlName="duplicatePassword"
+                        placeholder="{{ 'Repeat Password' | translate }}">
+                    </div>
+                </div>
+                <a class="btn rounded-btn" (click)="onRegister()">{{ 'Register' | translate }}</a>&nbsp;
+                <a class="btn rounded-btn" [routerLink]="['/login']">{{ 'Log in' | translate }}</a>
+            </form>
+        </div>
+    </div>
+</div>

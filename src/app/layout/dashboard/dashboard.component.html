@@ -1,0 +1,75 @@
+<div [@routerTransition]>
+  <h2>Voluntarios</h2>
+  <div class="row">
+    <div class="col-xl-4 col-lg-6">
+      <app-stat [bgClass]="'yellow'" [icon]="'fa-cutlery'" [count]="getCerrados('cocina')" [subcount]="solicitudes.cocina.length" [label]="'En cocina'" [textoLink]="'cocineros'">
+      </app-stat>
+    </div>
+    <div class="col-xl-4 col-lg-6">
+      <app-stat [bgClass]="'gris'" [icon]="'fa-group'" [count]="getCerrados('acompanantes')" [subcount]="solicitudes.acompanantes.length" [label]="'Acompañantes'"
+        [textoLink]="'acompañantes'">
+      </app-stat>
+    </div>
+    <div class="col-xl-4 col-lg-6">
+      <app-stat [bgClass]="'azul'" [icon]="'fa-leaf'" [count]="getCerrados('servicio')" [subcount]="solicitudes.servicio.length" [label]="'Servicio'" [textoLink]="'ayudantes'">
+      </app-stat>
+    </div>
+  </div>
+  <hr />
+  <h3 class="text-muted text-center mb-4"> Necesitas más voluntarios? </h3>
+  <div class="row">
+    <div class="col-xl4 col-lg-4" *ngFor="let section of masVolSections">
+      <div class="card">
+        <div class="card-body">
+
+          <h5 class="card-title">{{ section.title }}</h5>
+          <div style="display:flex">
+            <div style="display: flex;
+                                    width: 100%;
+                                    justify-content: center;
+                                    align-items: center;">
+              <i class="fa fa-5x {{section.icon}}"></i>
+            </div>
+            <div style="display: flex;width: 100%; flex-direction: column;align-items: center;justify-content: center">
+              <button class="btn" (click)="increment(section.key)">
+                <i class="fa fa-plus fa-2x"></i>
+              </button>
+              <h1>{{ values[section.key] || 0}}</h1>
+              <button class="btn" (click)="decrement(section.key)">
+                <i class="fa fa-minus fa-2x"></i>
+              </button>
+            </div>
+          </div>
+          <p class="card-text">
+            {{ section.descripcion}}
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <h5 class="mt-4 mb-3 text-center"> Para que días lo quieres?</h5>
+
+  <div style="display: flex;justify-content: center;">
+    <div style="width: fit-content">
+      <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
+      </ngb-datepicker>
+
+      <ng-template #t let-date let-focused="focused">
+        <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+          [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
+          (mouseleave)="hoveredDate = null">
+          {{ date.day }}
+        </span>
+      </ng-template>
+    </div>
+  </div>
+  <hr>
+  <div style="display: flex;justify-content: center;">
+    <button (click)="enviarSolicitudes()" class="btn btn-lg" [class.btn-primary]="!enviandoSolicitudes"
+      [class.btn-success]="enviandoSolicitudes">
+      {{ enviandoSolicitudes ? 'Enviando' : 'Enviar' }}
+    </button>
+  </div>
+</div>

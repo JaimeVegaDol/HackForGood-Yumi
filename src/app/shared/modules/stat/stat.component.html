@@ -1,0 +1,20 @@
+<div class="card text-white {{bgClass}}">
+    <div class="card-header">
+        <div class="row">
+            <div class="col col-xs-3">
+                <i *ngIf="!src" class="fa {{icon}} fa-5x"></i>
+                <img *ngIf="src" [src]="src" width="80" height="80"/>
+            </div>
+            <div class="col col-xs-9" style="display: flex; flex-direction: column;align-items: center;justify-content: center">
+                <div class="d-block huge h3" style="display:flex; margin-right:0.5em">{{count}} <span *ngIf="subcount !== undefined"> / {{count + subcount || '-'}}</span></div>
+                <div class="d-block">{{label}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <span class="float-left">Ver tus {{textoLink}}</span>
+        <div class="float-right card-inverse">
+            <span ><i class="fa fa-arrow-circle-right"></i></span>
+        </div>
+    </div>
+</div>

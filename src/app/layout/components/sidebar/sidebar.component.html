@@ -1,0 +1,79 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+    <div class="list-group">
+        <a *ngIf="isComedor" [routerLink]="['/voluntarios']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa-fw fas fa-hands"></i>&nbsp;
+            <span>Voluntarios</span>
+        </a>
+        <a *ngIf="isComedor" routerLink="/perfil" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-user"></i>&nbsp;
+            <span>Perfil</span>
+        </a>
+        <a *ngIf="!isComedor" routerLink="/solicitudes" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-list"></i>&nbsp;
+            <span>Solicitudes</span>
+        </a>
+        <a *ngIf="!isComedor" routerLink="/mis_solicitudes" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fab fa-angellist"></i>&nbsp;
+            <span>Mis Registros</span>
+        </a>
+
+        <a *ngIf="!isComedor" routerLink="/hello" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-star"></i>&nbsp;
+            <span>Recomendaciones</span>
+        </a>
+
+        <a *ngIf="!isComedor" routerLink="/hello2" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-user"></i>&nbsp;
+            <span>Perfil</span>
+        </a>
+        
+        
+        <a *ngIf="isComedor" [routerLink]="['/tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-table"></i>&nbsp;
+            <span>Banco de alimentos</span>
+        </a>
+        <a *ngIf="isComedor" [routerLink]="['/bs-element']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-list"></i>&nbsp;
+            <span>Menu</span>
+        </a>
+        <a *ngIf="isComedor" [routerLink]="['/grid']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-star"></i>&nbsp;
+            <span>Asistentes habituales</span>
+        </a>
+        <div class="header-fields">
+            <div class="nested-menu">
+                <a class="list-group-item" (click)="addExpandClass('profile')">
+                    <span><i class="fa fa-user"></i>&nbsp; John Smith</span>
+                </a>
+                <li class="nested" [class.expand]="showMenu === 'profile'">
+                    <ul class="submenu">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <span><i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <span><i class="fa fa-fw fa-envelope"></i> {{ 'Inbox' | translate }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <span><i class="fa fa-fw fa-gear"></i> {{ 'Settings' | translate }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/login']" (click)="onLoggedout()">
+                                <span><i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </div>
+    </div>
+    <div class="toggle-button" [ngClass]="{collapsed: collapsed}" (click)="toggleCollapsed()">
+        <i class="fa fa-fw fa-angle-double-{{collapsed?'right':'left'}}"></i>&nbsp;
+        <span>{{ 'Collapse Sidebar' | translate }}</span>
+    </div>
+</nav>

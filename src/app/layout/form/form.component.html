@@ -1,0 +1,83 @@
+<div [@routerTransition]>
+  <app-page-header class="mt-5" [heading]="'Datos del Comedor'" [icon]="'fa-edit'"></app-page-header>
+  <div class="row">
+    <div class="col-lg-12">
+      <form role="form" [formGroup]="comedorForm">
+        <fieldset class="form-group">
+          <label>Nombre</label>
+          <input class="form-control" formControlName="name">
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label>Email</label>
+          <input type="email" class="form-control" formControlName="email">
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label>Dirección</label>
+          <input class="form-control" formControlName="direccion" placeholder="Añade tu dirección">
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control"
+            formControlName="telefono" placeholder="Añade tu teléfono">
+        </fieldset>
+        <div>
+          <label>Web</label>
+        </div>
+        <div class="form-group input-group">
+
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+          </div>
+          <!-- <span class="input-group-addon">@</span> -->
+          <input type="text" class="form-control" placeholder="Web" formControlName="web">
+        </div>
+
+        <fieldset class="form-group">
+          <label>Capacidad</label>
+          <input type="number" class="form-control" formControlName="capacidad" placeholder="Capacidad de tu comedor">
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label>Horario</label>
+          <div>
+                <!-- <label formArrayName="dias" *ngFor="let day of comedorForm.controls.dias.controls; let i = index">
+                    <input type="checkbox" [formControlName]="i">
+                    {{ day }}
+                    </label> -->
+            <div class="form-check form-check-inline" *ngFor="let day of diasSemana" >
+                <input
+                class="form-check-input"
+                type="checkbox"
+                [value]="day"
+                [id]="day"
+                (change)="onCheckChange($event)"
+                [checked]="isChecked(day)">
+                <label class="form-check-label" [for]="day">{{ day }}</label>
+            </div>
+          </div>
+          <div style="display:flex">
+            <div class="ml-5 flex-column" style="display: flex; justify-content: center;align-items: center;">
+              <div class="text-center">
+                Desde
+              </div>
+              <ngb-timepicker [(ngModel)]="desdeHora" formControlName="desdeHora"></ngb-timepicker>
+            </div>
+            <div class="ml-5 flex-column" style="display: flex; justify-content: center;align-items: center;">
+              <div>
+                Hasta
+              </div>
+              <ngb-timepicker [(ngModel)]="hastaHora" formControlName="hastaHora"></ngb-timepicker>
+            </div>
+          </div>
+        </fieldset>
+        <div>
+          <button (click)="guardarPerfil()" class="btn" [class.btn-yellow]="!isSaved" [class.btn-success]="isSaved">
+            {{ isSaved ? 'Guardado' : 'Guardar' }}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
